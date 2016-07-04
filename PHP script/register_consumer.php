@@ -67,34 +67,34 @@
 		$message += $cityErr;
 	}
 	
-	echo "$message";
+	//If there is no error message insert into database
+	if($message == "")
+	{
 	
-	if($message != "")
+		// Create query
+		$sql = "INSERT INTO `consumers` (`ID`, `name`, `date_of_birth`, `phone_number`, `email`, `blood_type`, `city`, `hospital`, `department`, `description`) 
+							  	 VALUES (NULL, '$name', '$date_of_birth', '$phone_number', '$email', '$blood_type', '$city', '$hospital', '$department', '$description');";
+
+		// Create PDO connection
+		$db = new PDO("mysql:host=$servername;dbname=$database;charset=utf8mb4", $username, $password);
+	
+		try 
+		{
+    		//connect as appropriate as above
+    		$db->query($sql); 
+		} 
+		catch(PDOException $ex) 
+		{
+    		echo "An Error occured!"; 
+    		some_logging_function($ex->getMessage());
+		}
+	}
+	else
 	{
 		$response = "Error";
-		$result = array("data"=>$data, "message"=>$message, "response"=>$response);
-		return $result;
 	}
 	
-	// Create query
-	$sql = "INSERT INTO `consumers` (`ID`, `name`, `date_of_birth`, `phone_number`, `email`, `blood_type`, `city`, `hospital`, `department`, `description`) 
-						  	 VALUES (NULL, '$name', '$date_of_birth', '$phone_number', '$email', '$blood_type', '$city', '$hospital', '$department', '$description');";
-
-	// Create PDO connection
-	$db = new PDO("mysql:host=$servername;dbname=$database;charset=utf8mb4", $username, $password);
+	$result = array("data"=>$data, "message"=>$message, "response"=>$response);
 	
-	try 
-	{
-    	//connect as appropriate as above
-    	$db->query($sql); 
-	} 
-	catch(PDOException $ex) 
-	{
-    	echo "An Error occured!"; 
-    	some_logging_function($ex->getMessage());
-	}
-	
-	echo "Information : $name	$date_of_birth	$phone_number	$email	$blood_type	 $city  $hospital $department $description";
-	
-	return $result;
+	echo json_encode($result);
 ?>

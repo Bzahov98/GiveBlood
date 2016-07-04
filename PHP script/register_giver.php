@@ -18,7 +18,6 @@
 	$response = "Successfull";
 	$data = array("name" => $name, "date_of_birth" => $date_of_birth, "phone_number" => $phone_number,
 				  "email" => $email, "blood_type" => $blood_type, "city" => $city);
-	$result = array("data"=>$data, "message"=>$message, "response"=>$response);
 	
 	//Connection info
 	$servername = "localhost";
@@ -60,37 +59,36 @@
 	if (!preg_match("/^[a-zA-Z ]*$/", $city)) 
 	{
   		$cityErr =  "City Error : Only letters and white space allowed \n"; 
-		$message += $cityErr;
+		$message .= $cityErr;
 	}
 	
-	echo "$message";
-	
-	if($message != "")
-	{
-		$response = "Error";
-		$result = array("data"=>$data, "message"=>$message, "response"=>$response);
-		return $result;
-	}
-	
-	// Create query
-	$sql = "INSERT INTO `consumers` (`ID`, `name`, `date_of_birth`, `phone_number`, `email`, `blood_type`, `city`) 
+	//If there is no error message insert into database
+	if($message == "")
+	{	
+		// Create query
+		$sql = "INSERT INTO `givers` (`ID`, `name`, `date_of_birth`, `phone_number`, `email`, `blood_type`, `city`) 
 						  	 VALUES (NULL, '$name', '$date_of_birth', '$phone_number', '$email', '$blood_type', '$city');";
 
-	// Create PDO connection
-	$db = new PDO("mysql:host=$servername;dbname=$database;charset=utf8mb4", $username, $password);
+		// Create PDO connection
+		$db = new PDO("mysql:host=$servername;dbname=$database;charset=utf8mb4", $username, $password);
 	
-	try 
+		try 
+		{
+    		//connect as appropriate as above
+    		$db->query($sql); 
+		} 
+		catch(PDOException $ex) 
+		{
+    		echo "An Error occured!"; 
+    		some_logging_function($ex->getMessage());
+		}
+	}
+	else
 	{
-    	//connect as appropriate as above
-    	$db->query($sql); 
-	} 
-	catch(PDOException $ex) 
-	{
-    	echo "An Error occured!"; 
-    	some_logging_function($ex->getMessage());
+		$response = "Error";
 	}
 	
-	echo "Information : $name	$date_of_birth	$phone_number	$email	$blood_type	 $city";
+	$result = array("data"=>$data, "message"=>$message, "response"=>$response);
 	
-	return $result;
+	echo json_encode($result);
 ?>
