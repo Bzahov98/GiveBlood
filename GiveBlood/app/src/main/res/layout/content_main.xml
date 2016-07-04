@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#FF851B"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/imageView"
+        android:layout_alignTop="@+id/GiveBloodDescr"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/giveimg"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/download"
+        android:paddingTop="21dp" />
+
+    <TextView android:id="@+id/GiveBloodDescr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Помогни дари кръв, бъди съпричастен или намери по най-бързия начинпомощта за теб"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="48dp"
+        android:textAlignment="center"
+        android:layout_alignParentRight="false"
+        android:paddingTop="111dp" />
+
+    <RelativeLayout android:layout_width="wrap_content"
+
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:layout_alignTop="@+id/GiveBloodDescr"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingTop="21dp"
+        android:id="@+id/mainContent">
+
+        <TextView
+            android:id="@+id/CampView"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:text="Вижте когар къде и как да се организират кампании за даряване на кръв"
+            android:singleLine="false"
+            android:textAlignment="center"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Кампании"
+            android:id="@+id/CampBtn"
+            android:gravity="center"
+            android:layout_alignBottom="@+id/CampView"
+            android:layout_centerHorizontal="true" />
+
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar"
+            android:layout_alignWithParentIfMissing="false"
+            android:paddingLeft="100dp"
+            android:paddingRight="100dp"
+            android:thumbTintMode="multiply"
+            android:max="100"
+            android:progressDrawable="@drawable/seekbar_progressbar"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="aa"
+            android:id="@+id/TextFromSeekBar"
+            android:layout_below="@+id/seekBar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="38dp" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
