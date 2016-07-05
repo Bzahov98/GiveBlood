@@ -4,7 +4,6 @@
     <string name="giveimg">GiveImg</string>
     <string name="title_activity_pomogni_mi">Помогни Ми</string>
 
-    <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>
@@ -16,4 +15,9 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="alchnismezakruv">Помогни дари кръв, бъди съпричастен или намери по най-бързия начин помощ за теб.</string>
+    <string name="reg_pomogni_mi">Регистрирай се в системта, за да получиш помощ.</string>
+    <string name="campa_text">Вижте кога, къде и как да се организират кампании за даряване на кръв.</string>
+    <string name="reg_pomogni">Регистрирай се в системата, за да можеш да помогнеш.</string>
+    <string name="Rights">Съгласен съм предоставените от мен лични данни да бъдат съхранявани и обработвани за целите на приложението от екипа на БОДК</string>
 </resources>

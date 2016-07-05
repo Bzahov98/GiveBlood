@@ -4,26 +4,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Visibility;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity{
     ImageView image;
     SeekBar seekBar;
     TextView textView;
+    private RelativeLayout campLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        //campLayout = (RelativeLayout) findViewById(R.id.CampLayout);
+        //campLayout.setVisibility(View.INVISIBLE);
+       // FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         /*fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,4 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
+

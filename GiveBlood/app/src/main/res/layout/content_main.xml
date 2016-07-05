@@ -21,7 +21,7 @@
     <TextView android:id="@+id/GiveBloodDescr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Помогни дари кръв, бъди съпричастен или намери по най-бързия начин помощ за теб"
+        android:text="@string/alchnismezakruv"
         android:layout_alignParentTop="true"
         android:layout_marginTop="48dp"
         android:textSize="20dp"
@@ -38,33 +38,6 @@
         android:layout_alignParentStart="true"
         android:paddingTop="21dp"
         android:id="@+id/mainContent">
-
-
-
-        <TextView
-            android:id="@+id/CampView"
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:text="Вижте когар къде и как да се организират кампании за даряване на кръв"
-            android:singleLine="false"
-            android:textColor="@android:color/background_light"
-            android:textAlignment="center"
-            android:layout_gravity="bottom"
-            android:textSize="13dp"
-            android:layout_marginBottom="10dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <Button
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Кампании"
-            android:id="@+id/CampBtn"
-            android:gravity="center"
-            android:layout_alignBottom="@+id/CampView"
-            android:layout_centerHorizontal="true" />
 
         <SeekBar
             android:layout_width="wrap_content"
