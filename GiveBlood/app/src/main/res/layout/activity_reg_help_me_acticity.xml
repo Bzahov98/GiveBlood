@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
                 android:background="#f2eded"
-    android:layout_height="match_parent"
+                android:layout_height="match_parent"
                 android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".RegHelpMeActivity">
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context=".RegHelpMeActivity">
 
    <!-- <EditText
         android:layout_width="wrap_content"
@@ -79,54 +79,54 @@
         android:layout_alignRight="@+id/editText"
         android:layout_alignEnd="@+id/editText" />-->
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton"
-        android:src="@drawable/potvardibtn"
-        android:background="@android:color/transparent"
-        android:onClick="PostReq"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:paddingRight="40dp"
-        android:paddingLeft="40dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Results"
-        android:textAlignment="center"
-        android:textSize="12dp"
-        android:textStyle="bold"
-        android:text="@string/Rights"
-        android:textColor="#ff0000"
-        android:layout_above="@+id/imageButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
+   <ImageButton
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/imageButton"
+       android:src="@drawable/potvardibtn"
+       android:background="@android:color/transparent"
+       android:onClick="PostReq"
+       android:layout_alignParentBottom="true"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentStart="true"
+       android:layout_alignParentRight="true"
+       android:layout_alignParentEnd="true"
+       android:paddingRight="40dp"
+       android:paddingLeft="40dp"/>
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/Results"
+       android:textAlignment="center"
+       android:textSize="12dp"
+       android:textStyle="bold"
+       android:text="@string/Rights"
+       android:textColor="#ff0000"
+       android:layout_above="@+id/imageButton"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentStart="true"
+       android:layout_alignParentRight="true"
+       android:layout_alignParentEnd="true"/>
 
-    <ExpandableListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/expaListViewHelpMe"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_above="@+id/testtext"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+   <ExpandableListView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/expaListViewHelpMe"
+       android:layout_alignParentTop="true"
+       android:layout_alignParentRight="true"
+       android:layout_alignParentEnd="true"
+       android:layout_above="@+id/testtext"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentStart="true"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="testtext"
-        android:id="@+id/testtext"
-        android:layout_above="@+id/Results"
-        android:layout_centerHorizontal="true"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"/>
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textAppearance="?android:attr/textAppearanceSmall"
+       android:text="testtext"
+       android:id="@+id/testtext"
+       android:layout_above="@+id/Results"
+       android:layout_centerHorizontal="true"
+       android:paddingLeft="40dp"
+       android:paddingRight="40dp"/>
 </RelativeLayout>

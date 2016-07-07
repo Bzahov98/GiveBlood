@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF851B"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".RegHelpActivity">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="name"
+        android:ems="10"
+        android:id="@+id/NameTxt"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="45dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:text="date of birth"
+        android:id="@+id/dateTxt"
+        android:layout_below="@+id/NameTxt"
+        android:layout_alignLeft="@+id/NameTxt"
+        android:layout_alignStart="@+id/NameTxt" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/PhoneTxt"
+        android:layout_below="@+id/dateTxt"
+        android:layout_alignLeft="@+id/dateTxt"
+        android:layout_alignStart="@+id/dateTxt"
+        android:text="Phone Number" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/EmailTxt"
+        android:layout_below="@+id/PhoneTxt"
+        android:layout_alignLeft="@+id/PhoneTxt"
+        android:layout_alignStart="@+id/PhoneTxt"
+        android:text="Email" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/CityTxt"
+        android:layout_below="@+id/EmailTxt"
+        android:layout_alignLeft="@+id/EmailTxt"
+        android:layout_alignStart="@+id/EmailTxt"
+        android:text="Town"
+        android:layout_alignRight="@+id/EmailTxt"
+        android:layout_alignEnd="@+id/EmailTxt" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/register_button"
+        android:src="@drawable/potvardibtn"
+        android:background="#FF851B"
+        android:onClick="sendPostRequest"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Results"
+        android:textAlignment="center"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:text="@string/Rights"
+        android:textColor="#ff0000"
+        android:layout_above="@+id/register_button"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/horizontalScrollView"
+        android:layout_below="@+id/CityTxt"
+        android:layout_alignLeft="@+id/CityTxt"
+        android:layout_alignStart="@+id/CityTxt"
+        android:layout_alignRight="@+id/CityTxt"
+        android:layout_alignEnd="@+id/CityTxt"
+        android:scrollbars="none">
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/radioGroup"
+            android:layout_alignBottom="@+id/showOutput"
+            android:layout_alignRight="@+id/register_button"
+            android:layout_alignEnd="@+id/register_button"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <RadioButton android:id="@+id/a_negative"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A-"
+                android:onClick="onRadioButtonClicked"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:checked = "true"/>
+
+            <RadioButton android:id="@+id/a_positive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A+"
+                android:onClick="onRadioButtonClicked"
+                android:layout_toRightOf="@+id/a_negative"
+                android:layout_toEndOf="@+id/a_negative" />
+
+            <RadioButton android:id="@+id/b_negative"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="B-"
+                android:onClick="onRadioButtonClicked"
+                android:layout_toRightOf="@+id/a_positive"
+                android:layout_toEndOf="@+id/a_positive" />
+
+            <RadioButton android:id="@+id/b_positive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="B+"
+                android:onClick="onRadioButtonClicked"
+                android:layout_toRightOf="@+id/b_negative"
+                android:layout_toEndOf="@+id/b_negative" />
+
+            <RadioButton android:id="@+id/o_negative"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="O-"
+                android:onClick="onRadioButtonClicked"
+                android:layout_toRightOf="@+id/b_positive"
+                android:layout_toEndOf="@+id/b_positive" />
+
+            <RadioButton android:id="@+id/o_positive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="O+"
+                android:onClick="onRadioButtonClicked"
+                android:layout_toRightOf="@+id/o_negative"
+                android:layout_toEndOf="@+id/o_negative" />
+
+            <RadioButton android:id="@+id/ab_negative"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AB-"
+                android:onClick="onRadioButtonClicked"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <RadioButton android:id="@+id/ab_positive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AB+"
+                android:onClick="onRadioButtonClicked"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+        </RadioGroup>
+    </HorizontalScrollView>
+
+
+</RelativeLayout>
