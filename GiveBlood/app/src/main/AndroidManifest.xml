@@ -28,7 +28,8 @@
             android:name=".Help"
             android:label="@string/title_activity_pomogni_mi" />
         <activity android:name=".PomogniMii" />
-        <activity android:name=".RegHelpMeActivity" />
+        <activity android:name=".RegHelpMeActivity"
+                  android:windowSoftInputMode="adjustPan" />
         <activity android:name=".RegHelpActivity" />
         <activity android:name=".BaseActivity"></activity>
     </application>

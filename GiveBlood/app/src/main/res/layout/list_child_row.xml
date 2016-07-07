@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+                android:background="#f4f0f7">
+
+    <TextView
+        android:id="@+id/listview_sequence"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+     android:layout_alignParentLeft="true"
+     android:visibility="invisible"
+     android:layout_alignParentTop="true"
+     android:paddingLeft="1sp"
+     android:paddingRight="21dp"
+
+     android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/listview_childItem"
+        android:layout_width="wrap_content"
+        android:textColor="#000"
+        android:paddingTop="19dp"
+        android:paddingLeft="35dp"
+        android:layout_height="wrap_content"
+
+        android:layout_toRightOf="@id/listview_sequence"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="29dp"
+        android:allowUndo="true"
+        android:textColor="#000"
+        android:enabled="true"
+        android:inputType="text"
+        android:layout_alignParentRight = "true"
+        android:layout_toRightOf="@id/listview_childItem"/>
+
+
+</RelativeLayout>
