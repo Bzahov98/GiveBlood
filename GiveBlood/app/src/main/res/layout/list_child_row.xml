@@ -21,6 +21,7 @@
         android:id="@+id/listview_childItem"
         android:layout_width="wrap_content"
         android:textColor="#000"
+        android:text ="asdasddsasda"
         android:paddingTop="19dp"
         android:paddingLeft="35dp"
         android:layout_height="wrap_content"
@@ -29,6 +30,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
+        android:id="@+id/edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="29dp"

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/horizontalScrollView"
+        android:layout_below="@+id/CityTxt"
+        android:layout_alignLeft="@+id/CityTxt"
+        android:layout_alignStart="@+id/CityTxt"
+        android:layout_alignRight="@+id/CityTxt"
+        android:layout_alignEnd="@+id/CityTxt"
+        android:scrollbars="none">
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/radioGroup"
+                    android:layout_alignBottom="@+id/showOutput"
+                    android:layout_alignRight="@+id/register_button"
+                    android:layout_alignEnd="@+id/register_button"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
+
+            <RadioButton android:id="@+id/a_negative"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="A-"
+                         android:onClick="onRadioButtonClicked"
+                         android:layout_alignParentLeft="true"
+                         android:layout_alignParentStart="true"
+                         android:checked = "true"/>
+
+            <RadioButton android:id="@+id/a_positive"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="A+"
+                         android:onClick="onRadioButtonClicked"
+                         android:layout_toRightOf="@+id/a_negative"
+                         android:layout_toEndOf="@+id/a_negative" />
+
+            <RadioButton android:id="@+id/b_negative"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="B-"
+                         android:onClick="onRadioButtonClicked"
+                         android:layout_toRightOf="@+id/a_positive"
+                         android:layout_toEndOf="@+id/a_positive" />
+
+            <RadioButton android:id="@+id/b_positive"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="B+"
+                         android:onClick="onRadioButtonClicked"
+                         android:layout_toRightOf="@+id/b_negative"
+                         android:layout_toEndOf="@+id/b_negative" />
+
+            <RadioButton android:id="@+id/o_negative"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="O-"
+                         android:onClick="onRadioButtonClicked"
+                         android:layout_toRightOf="@+id/b_positive"
+                         android:layout_toEndOf="@+id/b_positive" />
+
+            <RadioButton android:id="@+id/o_positive"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="O+"
+                         android:onClick="onRadioButtonClicked"
+                         android:layout_toRightOf="@+id/o_negative"
+                         android:layout_toEndOf="@+id/o_negative" />
+
+            <RadioButton android:id="@+id/ab_negative"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="AB-"
+                         android:onClick="onRadioButtonClicked"
+                         android:layout_alignParentRight="true"
+                         android:layout_alignParentEnd="true" />
+
+            <RadioButton android:id="@+id/ab_positive"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="AB+"
+                         android:onClick="onRadioButtonClicked"
+                         android:layout_alignParentRight="true"
+                         android:layout_alignParentEnd="true" />
+
+        </RadioGroup>
+    </HorizontalScrollView>
+</RelativeLayout>

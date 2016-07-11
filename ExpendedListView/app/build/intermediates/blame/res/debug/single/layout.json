@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "E:\\GIT\\GiveBlood\\ExpendedListView\\app\\build\\intermediates\\res\\merged\\debug\\layout\\list_promo_items.xml",
+        "source": "E:\\GIT\\GiveBlood\\ExpendedListView\\app\\src\\main\\res\\layout\\list_promo_items.xml"
+    },
+    {
+        "merged": "E:\\GIT\\GiveBlood\\ExpendedListView\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_launcher.xml",
+        "source": "E:\\GIT\\GiveBlood\\ExpendedListView\\app\\src\\main\\res\\layout\\activity_launcher.xml"
+    },
+    {
+        "merged": "E:\\GIT\\GiveBlood\\ExpendedListView\\app\\build\\intermediates\\res\\merged\\debug\\layout\\list_promo_header.xml",
+        "source": "E:\\GIT\\GiveBlood\\ExpendedListView\\app\\src\\main\\res\\layout\\list_promo_header.xml"
+    }
+]

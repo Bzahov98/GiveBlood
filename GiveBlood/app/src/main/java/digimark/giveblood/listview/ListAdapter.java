@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -14,17 +15,18 @@ import java.util.ArrayList;
 
 import digimark.giveblood.BaseActivity;
 import digimark.giveblood.R;
+import digimark.giveblood.RegHelpMeActivity;
 
 public class ListAdapter extends BaseExpandableListAdapter {
 
 	private Context context;
 	private ArrayList<HeaderInfo> deptList;
-	private Activity aactivity;
+//	private Activity aactivity;
 
-	public ListAdapter(Context context, ArrayList<HeaderInfo> deptList, Activity activity) {
+	public ListAdapter(Context context, ArrayList<HeaderInfo> deptList) {
 		this.context = context;
 		this.deptList = deptList;
-		this.aactivity = activity;
+//		this.aactivity = activity;
 	}
 
 	@Override
@@ -78,6 +80,14 @@ public class ListAdapter extends BaseExpandableListAdapter {
 		return convertView;
 	}
 
+	public static class ChildHolder {
+		TextView productIdView;
+		TextView getProductNameIdView;
+		TextView a;
+		TextView b;
+		CheckBox chkGotAll;
+	}
+
 	public int getItemViewType(int groupPosition) {
 		boolean a = ((HeaderInfo) getGroup(groupPosition)).getName().contains("Кръвна");
 		return (a) ? 2 : 1;
@@ -85,17 +95,17 @@ public class ListAdapter extends BaseExpandableListAdapter {
 
 	@Override
 	public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-
-
 		DetailInfo detailInfo = ((HeaderInfo) getGroup(groupPosition)).getProductList().get(childPosition);
 		int type = getItemViewType(groupPosition);
 		//int type = 2;
+
+		ChildHolder holder = new ChildHolder();
+
 		LayoutInflater inf = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		if (convertView == null) {
 			switch (type) {
 				case 1:
 					convertView = inf.inflate(R.layout.list_child_row, parent, false);
-
 					break;
 				case 2:
 					convertView = inf.inflate(R.layout.list_child_blood_groups, parent, false);
@@ -108,14 +118,14 @@ public class ListAdapter extends BaseExpandableListAdapter {
 				TextView sequence = (TextView) convertView.findViewById(R.id.listview_sequence);
 				sequence.setText(detailInfo.getSequence()+ ") ");
 
-				TextView childName = (TextView) aactivity.findViewById(R.id.listview_childItem);
+				TextView childName = (TextView) convertView.findViewById(R.id.listview_childItem);
 				childName.setText(detailInfo.getName());
 			case 2:
-				RadioGroup radioGroup = (RadioGroup) aactivity.findViewById(R.id.km);
-				//radioGroup.check(R.id.radioButton);
-
-				RadioButton radioButton1 = (RadioButton) aactivity.findViewById(R.id.radioButton);
-				radioButton1.setText(detailInfo.getName().trim());
+//				RadioGroup radioGroup = (RadioGroup) aactivity.findViewById(R.id.km);
+//				//radioGroup.check(R.id.radioButton);
+//
+//				RadioButton radioButton1 = (RadioButton) aactivity.findViewById(R.id.radioButton);
+//				radioButton1.setText(detailInfo.getName().trim());
 //				radioButton1.setText(detailInfo.getName().trim());
 				break;
 		}

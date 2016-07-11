@@ -35,7 +35,7 @@ public class MainActivity extends BaseActivity{
             }
         });*/
         seekBar = (SeekBar) findViewById(R.id.seekBar);
-        seekBar.setProgress(50);
+//        seekBar.setProgress(50);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             int seekBarProgress = 50;
 

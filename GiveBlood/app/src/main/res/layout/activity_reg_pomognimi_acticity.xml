@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1">
+        <include
+            layout="@layout/list_group_heading"
+            android:id="@+id/header1_contacts"
+            />
+        <RelativeLayout
+            android:id="@+id/group1child"
+            android:visibility="visible"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <include
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                layout="@layout/list_child_row"
+                android:id="@+id/child1_names"
+                />
+            <include
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/child1_names"
+                layout="@layout/list_child_date_line"
+                android:id="@+id/child1_date"
+                />
+           <include
+               android:id="@+id/child1_email"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/child1_date"
+               layout="@layout/list_child_row"
+               />
+           <include
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/child1_email"
+                layout="@layout/list_child_row"
+                android:id="@+id/child1_number"
+                />
+
+       </RelativeLayout>
+        <include
+            android:id="@+id/header2_bloodtype"
+            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            layout="@layout/list_group_heading"
+            />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/group2child">
+
+
+        <include
+            android:layout_alignParentTop="true"
+            android:id="@+id/child2_bloodtype"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            layout="@layout/list_blood_radio_group"
+            />
+        </RelativeLayout>
+        <include
+            android:id="@+id/header3_town"
+            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            layout="@layout/list_group_heading"
+            />
+
+        <include
+            android:id="@+id/header4_hospital"
+            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            layout="@layout/list_group_heading"
+            />
+        <include
+            android:id="@+id/header5_department"
+            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            layout="@layout/list_group_heading"
+            />
+        <include
+            android:id="@+id/header6_description"
+            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            layout="@layout/list_group_heading"
+            />
+    </TableLayout>
+    </ScrollView>
+
+</LinearLayout>
