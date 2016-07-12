@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="hospitals">
+        <item>МБАЛ "Токуда Болница София"</item>
+        <item>УМБАЛ "Александровска" - София</item>
+        <item>УМБАЛ "Царица Йоанна - ИСУЛ"</item>
+        <item>Национална кардиологична болница</item>
+        <item>Университетска болница "Лозенец"</item>
+    </string-array>
+    <string-array name="towns">
+        <item>София</item>
+        <item>Варна</item>
+        <item>Бургас</item>
+        <item>Пловдив</item>
+        <item>Смолян</item>
+    </string-array>
+</resources>

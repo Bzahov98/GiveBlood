@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF851B">
+                android:background="@drawable/background">
 
 
     <ImageView
@@ -45,7 +45,7 @@
         android:onClick="RegPomogni"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#FF851B"
+        android:background="@android:color/transparent"
         android:src="@drawable/registracia"
         android:id="@+id/imageButton2"
         android:layout_below="@+id/textView"

@@ -5,25 +5,19 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import java.util.ArrayList;
+
 import java.util.Calendar;
-import java.util.LinkedHashMap;
-import digimark.giveblood.listview.DetailInfo;
-import digimark.giveblood.listview.HeaderInfo;
-import digimark.giveblood.listview.ListAdapter;
 
 
 public class RegHelpMeActivity extends Activity {
@@ -42,70 +36,159 @@ public class RegHelpMeActivity extends Activity {
 	private RadioGroup group;
 	private RadioButton radioButton;
 	private String blood_type;
-	View blood_header;
-	View content_blood;
-	View content_contacts;
-	View header_contacts;
-	View date_content;
 
-	View telephone;
-	View email;
+	View blood_header;
+	private View content_blood;
+
+	private View content_contacts;
+	private View header_contacts;
+
+	private View telephone;
+	private View email;
+	private View date_content;
+	private View town_header;
+	private View hospital_header;
+	private ListView hospitals_listView;
+	private View hospital_content;
+	private View department_header;
+	private View description_header;
+	private TextView department_context;
+	private TextView description_context;
+	private TextView description_amount_context;
+	private View town_content;
+	private ListView town_listView;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_reg_pomognimi_acticity);
 
+		//-------------------------------------------------------------------
 		date = (Button) findViewById(R.id.date_picker);
+
 		blood_header = findViewById(R.id.header2_bloodtype);
-		content_blood = findViewById(R.id.group2child);
+			setContent_blood(findViewById(R.id.group2child));
 
-		//((TextView) blood_header.findViewById(R.id.child2_bloodtype)).setText("Кръвна Група: ");
-		View town = findViewById(R.id.header3_town);
-		View hospital =  findViewById(R.id.header4_hospital);
-
-
-
-		header_contacts = findViewById(R.id.header1_contacts);
-		content_contacts = findViewById(R.id.group1child);
+		town_header = findViewById(R.id.header3_town);
+		hospital_header =  findViewById(R.id.header4_hospital);
+		hospital_content = findViewById(R.id.list_hospital);
+		town_content = findViewById(R.id.list_town);
 
 
+		setHeader_contacts(findViewById(R.id.header1_contacts));
+		setContent_contacts(findViewById(R.id.group1child));
 
-		((TextView) header_contacts.findViewById(R.id.view_head)).setText("Контакти, Телефон");
+
+
+		((TextView) getHeader_contacts().findViewById(R.id.view_head)).setText("Контакти, Телефон");
 
 			View name = findViewById(R.id.child1_names);
 				((TextView) name.findViewById(R.id.listview_childItem)).setText("Име:");
 
 		View date_content = findViewById(R.id.child1_date);
 
-		telephone = findViewById(R.id.child1_number);
-			((TextView) telephone.findViewById(R.id.listview_childItem)).setText("Телефон: ");
+		setTelephone(findViewById(R.id.child1_number));
+			((TextView) getTelephone().findViewById(R.id.listview_childItem)).setText("Телефон: ");
 
-		email = findViewById(R.id.child1_email);
-			((TextView) email.findViewById(R.id.listview_childItem)).setText("Email: ");
+		setEmail(findViewById(R.id.child1_email));
+			((TextView) getEmail().findViewById(R.id.listview_childItem)).setText("Email: ");
 
-
-
-			((TextView) findViewById(R.id.child1_number).findViewById(R.id.listview_childItem)).setText("Телефон: ");
-		//	((TextView) header_contacts.findViewById(R.id.listview_childItem)).setText("Еmail: ");
 
 		((TextView) blood_header.findViewById(R.id.view_head)).setText("Кръвна група:");
 		((ImageView)  blood_header.findViewById(R.id.head_icon)).setImageResource(R.drawable.kravnagrupaicn);
 
-		((TextView) town.findViewById(R.id.view_head)).setText("Избери Град:");
-		((ImageView)  town.findViewById(R.id.head_icon)).setImageResource(R.drawable.mestopolojenieicn);
+		((TextView) town_header.findViewById(R.id.view_head)).setText("Избери Град:");
+		((ImageView)  town_header.findViewById(R.id.head_icon)).setImageResource(R.drawable.mestopolojenieicn);
+		town_listView = (ListView) findViewById(R.id.list_hospital);
 
-		((TextView) hospital.findViewById(R.id.view_head)).setText("Избери Болница:");
-		((ImageView)  hospital.findViewById(R.id.head_icon)).setImageResource(R.drawable.mestopolojenieicn);
-		((TextView) findViewById(R.id.header5_department).findViewById(R.id.view_head)).setText("Отделение:");
-		((TextView) findViewById(R.id.header6_description).findViewById(R.id.view_head)).setText("Описание:");
-//
-// loadData();
 
-		setClicks(header_contacts, content_contacts);
-		setClicks(blood_header, content_blood);
+		((TextView) hospital_header.findViewById(R.id.view_head)).setText("Избери Болница:");
+		((ImageView) hospital_header.findViewById(R.id.head_icon)).setImageResource(R.drawable.mestopolojenieicn);
+		hospitals_listView = (ListView) findViewById(R.id.list_hospital);
+		((ImageView)  hospital_header.findViewById(R.id.head_icon)).setImageResource(R.drawable.mestopolojenieicn);
 
+		department_header = findViewById(R.id.header5_department);
+			((TextView) department_header.findViewById(R.id.view_head)).setText("Отделение:");
+			department_context = ((TextView) findViewById(R.id.child5_depart).findViewById(R.id.listview_childItem));
+			department_context.setText("Отделение:");
+
+		description_header = findViewById(R.id.header6_description);
+		((ImageView) description_header.findViewById(R.id.head_icon)).setImageResource(R.drawable.kolichestvoicn);
+			((TextView) description_header.findViewById(R.id.view_head)).setText("Описание:");
+			description_context = ((TextView) findViewById(R.id.child6_descr).findViewById(R.id.listview_childItem));
+		description_context.setText("Описание: ");
+		description_amount_context = ((TextView) findViewById(R.id.child6_amount).findViewById(R.id.listview_childItem));
+		description_context.setText("Необходимо количество: ");
+
+		//---------------------------Set Show/Hide events------------------------------------
+
+		setClicks(getHeader_contacts(), getContent_contacts());
+		setClicks(blood_header, getContent_blood());
+		setClicks(town_header, town_content);
+		setClicks(hospital_header, hospital_content);
+		setClicks(department_header, town_listView);
+		setClicks(description_header, findViewById(R.id.group6child));
+
+		//---------------------------ListView Hospitals-----------------------------------
+
+
+
+		String[] values1 = getResources().getStringArray(R.array.towns);
+
+		Log.d("values", "vliz1a");
+
+		for(String s : values1){
+			Log.d("values",s);
+		}
+
+		ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, android.R.id.text1, values1);
+
+		town_listView.setAdapter(adapter1);
+		town_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+				String itemValue = (String) town_listView.getItemAtPosition(position);
+
+				((TextView) town_header.findViewById(R.id.view_head)).setText(itemValue);
+
+			}
+		});
+
+		//---------------------------ListView Hospitals-----------------------------------
+
+		;
+
+		String[] values = getResources().getStringArray(R.array.hospitals);
+
+		Log.d("values", "vliza");
+
+		for(String s : values){
+			Log.d("values",s);
+		}
+
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, android.R.id.text1, values);
+
+		hospitals_listView.setAdapter(adapter);
+		hospitals_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+				String itemValue = (String) hospitals_listView.getItemAtPosition(position);
+
+				((TextView) hospital_header.findViewById(R.id.view_head)).setText(itemValue);
+
+			}
+		});
+
+		//-----------------------------------end--------------------------------------------
 	}
+
 
 
 
@@ -127,22 +210,6 @@ public class RegHelpMeActivity extends Activity {
 		});
 	}
 
-
-//		myList = (ExpandableListView) findViewById(R.id.expaListViewHelpMe);
-
-//		listAdapter = new ListAdapter(this, deptList);
-//attach the adapter to the list
-//myList.setAdapter(listAdapter);
-
-//expandAll();
-
-//myList.setOnChildClickListener(myListItemClicked);
-//listener for group heading click
-//myList.setOnGroupClickListener(myListGroupClicked);
-
-//asd.setText(deptList.get(0).getProductList().get(2).getName());
-	/*}
-*/
 	public void showDatePickerDialog(View view) {
 		DialogFragment newFragment = new DatePickerFragment();
 		newFragment.show(getFragmentManager(), "datePicker");
@@ -155,6 +222,54 @@ public class RegHelpMeActivity extends Activity {
 		blood_type = radioButton.getText().toString();
 		((TextView) blood_header.findViewById(R.id.head_extra_text_view)).setText(blood_type);
 
+	}
+
+	public View getContent_blood() {
+		return content_blood;
+	}
+
+	public void setContent_blood(View content_blood) {
+		this.content_blood = content_blood;
+	}
+
+	public View getContent_contacts() {
+		return content_contacts;
+	}
+
+	public void setContent_contacts(View content_contacts) {
+		this.content_contacts = content_contacts;
+	}
+
+	public View getHeader_contacts() {
+		return header_contacts;
+	}
+
+	public void setHeader_contacts(View header_contacts) {
+		this.header_contacts = header_contacts;
+	}
+
+	public View getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(View telephone) {
+		this.telephone = telephone;
+	}
+
+	public View getEmail() {
+		return email;
+	}
+
+	public void setEmail(View email) {
+		this.email = email;
+	}
+
+	public View getDate_content() {
+		return date_content;
+	}
+
+	public void setDate_content(View date_content) {
+		this.date_content = date_content;
 	}
 
 	public static class DatePickerFragment extends DialogFragment

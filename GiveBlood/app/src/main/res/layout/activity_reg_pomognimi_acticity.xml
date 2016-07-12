@@ -2,7 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+    android:background="@drawable/background"
+    >
+    <ImageView
+        android:src="@drawable/logopomognimi"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:id="@+id/imageView5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/HelpMeText"
+        android:layout_below="@+id/imageView5"
+        android:layout_centerHorizontal="true"
+        android:text="ПОМОГНИ МИ"
+        android:textSize="22dp"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textColor="#f50808"
+        android:textColorHighlight="#c15c5c"
+        android:textIsSelectable="false"
+        android:textAppearance="@style/AppTheme" />
     <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -18,7 +43,7 @@
             />
         <RelativeLayout
             android:id="@+id/group1child"
-            android:visibility="visible"
+            android:visibility="gone"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -64,6 +89,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:id="@+id/group2child">
 
 
@@ -82,6 +108,12 @@
             android:layout_width="wrap_content"
             layout="@layout/list_group_heading"
             />
+        <ListView
+            android:id="@+id/list_town"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+        </ListView>
 
         <include
             android:id="@+id/header4_hospital"
@@ -90,6 +122,12 @@
             android:layout_width="wrap_content"
             layout="@layout/list_group_heading"
             />
+        <ListView
+            android:id="@+id/list_hospital"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+        </ListView>
         <include
             android:id="@+id/header5_department"
             android:layout_alignParentTop="true"
@@ -97,6 +135,20 @@
             android:layout_width="wrap_content"
             layout="@layout/list_group_heading"
             />
+        <RelativeLayout
+            android:id="@+id/group5child"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_width="wrap_content">
+            <include
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                layout="@layout/list_child_row"
+                android:id="@+id/child5_depart"
+                />
+
+        </RelativeLayout>
         <include
             android:id="@+id/header6_description"
             android:layout_alignParentTop="true"
@@ -104,6 +156,32 @@
             android:layout_width="wrap_content"
             layout="@layout/list_group_heading"
             />
+        <RelativeLayout
+            android:id="@+id/group6child"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:visibility="visible">
+            <include
+                android:id="@+id/child6_descr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                layout="@layout/list_child_row"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                />
+
+            <include
+                android:id="@+id/child6_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/child6_descr"
+                layout="@layout/list_child_row"
+
+                />
+        </RelativeLayout>
     </TableLayout>
     </ScrollView>
 

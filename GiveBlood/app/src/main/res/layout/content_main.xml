@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#FF851B"
+    android:background="@drawable/background"
     android:orientation="horizontal"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
@@ -25,7 +25,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="48dp"
         android:textSize="20dp"
-        android:textColor="@android:color/background_light"
+        android:textColor="@android:color/background_dark"
         android:textAlignment="center"
         android:layout_alignParentRight="false"
         android:paddingTop="111dp" />
