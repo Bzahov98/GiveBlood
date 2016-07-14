@@ -153,11 +153,12 @@ public class RegHelpMeActivity extends AppCompatActivity {
 
 		department_header = findViewById(R.id.header5_department);
 		((TextView) department_header.findViewById(R.id.view_head)).setText("Отделение:");
-			department_context = ((TextView) findViewById(R.id.child5_depart).findViewById(R.id.listview_childItem));
+		((ImageView) department_header.findViewById(R.id.head_icon)).setImageResource(R.drawable.mestopolojenieicn);
+		department_context = ((TextView) findViewById(R.id.child5_depart).findViewById(R.id.listview_childItem));
 			department_context.setText("Отделение:");
 
 		description_header = findViewById(R.id.header6_description);
-		((ImageView) description_header.findViewById(R.id.head_icon)).setImageResource(R.drawable.kolichestvoicn);
+		((ImageView) description_header.findViewById(R.id.head_icon)).setImageResource(R.drawable.mestopolojenieicn);
 		((TextView) description_header.findViewById(R.id.view_head)).setText("Описание:");
 			description_context = ((TextView) findViewById(R.id.child6_descr).findViewById(R.id.listview_childItem));
 			description_context.setText("Описание: ");
@@ -193,6 +194,7 @@ public class RegHelpMeActivity extends AppCompatActivity {
 
 				((TextView) town_header.findViewById(R.id.view_head)).setText(itemValue);
 				town_content.setVisibility(View.GONE);
+				((TextView) town_header.findViewById(R.id.head_extra_text_view)).setText("");
 
 				city = itemValue;
 			}
@@ -220,7 +222,8 @@ public class RegHelpMeActivity extends AppCompatActivity {
 				String itemValue = (String) hospitals_listView.getItemAtPosition(position);
 
 				((TextView) hospital_header.findViewById(R.id.view_head)).setText(itemValue);
-				hospitals_listView.setVisibility(View.GONE);
+				hospital_content.setVisibility(View.GONE);
+				((TextView) hospital_header.findViewById(R.id.head_extra_text_view)).setText("");
 
 				hospital = itemValue;
 			}
@@ -239,18 +242,29 @@ public class RegHelpMeActivity extends AppCompatActivity {
 
 	}
 
-	private void setClicks(View header, final View content)
+	private void setClicks(final View header, final View content)
 	{
 		header.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 
+				TextView temp = (TextView) header.findViewById(R.id.head_extra_text_view);
+
 				if(content.getVisibility() == View.VISIBLE)
 				{
 					content.setVisibility(View.GONE);
-				}else
+					if(temp.getText().equals("✍"))
+					{
+						temp.setText("");
+					}
+				}
+				else
 				{
 					content.setVisibility(View.VISIBLE);
+					if(temp.getText().equals(""))
+					{
+						temp.setText("✍");
+					}
 				}
 
 			}
@@ -385,7 +399,7 @@ public class RegHelpMeActivity extends AppCompatActivity {
 		protected Void doInBackground(String... params) {
 			try {
 
-				URL url = new URL("http://192.168.88.150/GiveBlood/register_consumer.php");
+				URL url = new URL("http://192.168.1.118/GiveBlood/register_consumer.php");
 				HttpURLConnection connection = (HttpURLConnection)url.openConnection();
 
 				cv.put(TAG_NAME, nameValue);

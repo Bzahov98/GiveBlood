@@ -42,6 +42,9 @@
         android:orientation="vertical">
         <include
             layout="@layout/list_group_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:id="@+id/header1_contacts"
             />
         <RelativeLayout
@@ -85,6 +88,7 @@
             android:id="@+id/header2_bloodtype"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_marginLeft="-7dp"
             layout="@layout/list_group_heading"
             />
 
