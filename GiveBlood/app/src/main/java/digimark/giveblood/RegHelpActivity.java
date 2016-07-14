@@ -115,15 +115,15 @@ public class RegHelpActivity extends AppCompatActivity {
         protected Void doInBackground(String... params) {
             try {
 
-                URL url = new URL("http://192.168.88.167/GiveBlood/register_giver.php");
+                URL url = new URL("http://192.168.1.118/GiveBlood/register_giver.php");
                 HttpURLConnection connection = (HttpURLConnection)url.openConnection();
 
-                cv.put("name", nameValue);
-                cv.put("date_of_birth", dateValue);
-                cv.put("phone_number", phoneValue);
-                cv.put("email", emailValue);
-                cv.put("blood_type", blood_type);
-                cv.put("city", cityValue);
+                cv.put(TAG_NAME, nameValue);
+                cv.put(TAG_DATE_OF_BIRTH, dateValue);
+                cv.put(TAG_PHONE_NUMBER, phoneValue);
+                cv.put(TAG_EMAIL, emailValue);
+                cv.put(TAG_BLOOD_TYPE, blood_type);
+                cv.put(TAG_CITY, cityValue);
 
                 connection.setRequestMethod("POST");
                 connection.setReadTimeout(10000);

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/background"
+    tools:context=".RegHelpMeActivity">
     >
     <ImageView
         android:src="@drawable/logopomognimi"
@@ -29,14 +31,15 @@
         android:textIsSelectable="false"
         android:textAppearance="@style/AppTheme" />
     <ScrollView
+                android:layout_below="@+id/HelpMeText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fillViewport="true">
+        android:layout_above="@+id/Results">
 
-    <TableLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:stretchColumns="1">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <include
             layout="@layout/list_group_heading"
             android:id="@+id/header1_contacts"
@@ -80,7 +83,6 @@
        </RelativeLayout>
         <include
             android:id="@+id/header2_bloodtype"
-            android:layout_alignParentTop="true"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             layout="@layout/list_group_heading"
@@ -103,34 +105,43 @@
         </RelativeLayout>
         <include
             android:id="@+id/header3_town"
-            android:layout_alignParentTop="true"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             layout="@layout/list_group_heading"
             />
-        <ListView
-            android:id="@+id/list_town"
-            android:visibility="gone"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
-        </ListView>
+        <LinearLayout
+            android:id="@+id/group3child"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+            <ListView
+                android:id="@+id/list_town"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                >
+            </ListView>
+        </LinearLayout>
 
         <include
             android:id="@+id/header4_hospital"
-            android:layout_alignParentTop="true"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             layout="@layout/list_group_heading"
             />
-        <ListView
-            android:id="@+id/list_hospital"
-            android:visibility="gone"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
-        </ListView>
+        <LinearLayout
+            android:id="@+id/group4child"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+            <ListView
+                android:id="@+id/list_hospital"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                >
+            </ListView>
+        </LinearLayout>
         <include
             android:id="@+id/header5_department"
-            android:layout_alignParentTop="true"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             layout="@layout/list_group_heading"
@@ -151,7 +162,6 @@
         </RelativeLayout>
         <include
             android:id="@+id/header6_description"
-            android:layout_alignParentTop="true"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             layout="@layout/list_group_heading"
@@ -160,7 +170,7 @@
             android:id="@+id/group6child"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:visibility="visible">
+            android:visibility="gone">
             <include
                 android:id="@+id/child6_descr"
                 android:layout_width="wrap_content"
@@ -182,7 +192,29 @@
 
                 />
         </RelativeLayout>
-    </TableLayout>
+    </LinearLayout>
     </ScrollView>
 
-</LinearLayout>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/register_button"
+        android:src="@drawable/potvardibtn"
+        android:background="#00000000"
+        android:onClick="sendPostRequestConsumers"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Results"
+        android:textAlignment="center"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:text="@string/Rights"
+        android:textColor="#ff0000"
+        android:layout_above="@+id/register_button"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

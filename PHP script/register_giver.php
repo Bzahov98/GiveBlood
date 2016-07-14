@@ -2,6 +2,11 @@
 	function validateDate($date)
 	{
     	$d = DateTime::createFromFormat('Y-m-d', $date);
+		
+		if (time() < strtotime('+18 years', strtotime($date))) {
+			return "You are under 18 years old \n";
+		}
+		
     	return $d && $d->format('Y-m-d') === $date;
 	}
 	
@@ -25,17 +30,53 @@
 	$password = "";
 	$database = "giveblood";
 	
-	//Data check
-	if (!preg_match("/^[a-zA-Z ]*$/",$name)) 
+	if($name === "")
 	{
-  		$nameErr =  "Name Error : Only letters and white space allowed \n"; 
-		$message += $nameErr;
+		$nameErr = "Name Error : Please input name \n";
+		$message .= $nameErr;
 	}
 	
-	if(validateDate($date_of_birth) == FALSE)
+	if($phone_number === "")
+	{
+		$phoneErr = "Phone Error : Please input phone number \n";
+		$message .= $phoneErr;
+	}
+	
+	if($email === "")
+	{
+		$emailErr = "Email Error : Please input email \n";
+		$message .= $emailErr;
+	}
+	
+	if($date_of_birth === "")
+	{
+		$dateErr = "Date Error : Please choose date of birth \n";
+		$message .= $dateErr;
+	}
+	
+	if($city === "")
+	{
+		$cityErr = "City Error : Please choose a city \n";
+		$message .= $cityErr;
+	}
+	
+	//Data check
+	if (!preg_match("/^[a-zA-Z ]*$/", $name) && !preg_match ("/^[а-яА-Я ]*$/su", trim($name))) 
+	{
+  		$nameErr =  "Name Error : Only letters and white space allowed \n"; 
+		$message .= $nameErr;
+	}
+	
+	$ch = validateDate($date_of_birth);
+	
+	if($ch === FALSE)
 	{
 		$dateErr = "Date Error : Invalid date \n";
 		$message .= $dateErr;
+	}
+	else if($ch != 1)
+	{
+		$message .= $ch;
 	}
 	
 	if(is_numeric($phone_number) == FALSE)
@@ -56,7 +97,7 @@
 		$message .= $typeErr;
 	}
 	
-	if (!preg_match("/^[a-zA-Z ]*$/", $city)) 
+	if (!preg_match("/^[a-zA-Z ]*$/", $city) && !preg_match ("/^[а-яА-Я ]*$/su", trim($city))) 
 	{
   		$cityErr =  "City Error : Only letters and white space allowed \n"; 
 		$message .= $cityErr;

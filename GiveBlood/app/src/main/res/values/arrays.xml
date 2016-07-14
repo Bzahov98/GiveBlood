@@ -8,10 +8,32 @@
         <item>Университетска болница "Лозенец"</item>
     </string-array>
     <string-array name="towns">
-        <item>София</item>
-        <item>Варна</item>
+        <item>Благоевград</item>
         <item>Бургас</item>
+        <item>Варна</item>
+        <item>Велико Търново</item>
+        <item>Видин</item>
+        <item>Враца</item>
+        <item>Габрово</item>
+        <item>Добрич</item>
+        <item>Кърджали</item>
+        <item>Кюстендил</item>
+        <item>Ловеч</item>
+        <item>Монтана</item>
+        <item>Пазарджик</item>
+        <item>Перник</item>
+        <item>Плевен</item>
         <item>Пловдив</item>
+        <item>Разград</item>
+        <item>Русе</item>
+        <item>Силистра</item>
+        <item>Сливен</item>
         <item>Смолян</item>
+        <item>София</item>
+        <item>Стара Загора</item>
+        <item>Търговище</item>
+        <item>Хасково</item>
+        <item>Шумен</item>
+        <item>Ямбол</item>
     </string-array>
 </resources>

@@ -30,11 +30,47 @@
 	$password = "";
 	$database = "giveblood";
 	
+	if($name === "")
+	{
+		$nameErr = "Name Error : Please input name \n";
+		$message .= $nameErr;
+	}
+	
+	if($phone_number === "")
+	{
+		$phoneErr = "Phone Error : Please input phone number \n";
+		$message .= $phoneErr;
+	}
+	
+	if($email === "")
+	{
+		$emailErr = "Email Error : Please input email \n";
+		$message .= $emailErr;
+	}
+	
+	if($date_of_birth === "")
+	{
+		$dateErr = "Date Error : Please choose date of birth \n";
+		$message .= $dateErr;
+	}
+	
+	if($city === "")
+	{
+		$cityErr = "City Error : Please choose a city \n";
+		$message .= $cityErr;
+	}
+	
+	if($hospital === "")
+	{
+		$hospitalErr = "Hospital Error : Please choose a hospital \n";
+		$message .= $hospitalErr;
+	}
+	
 	//Data check
-	if (!preg_match("/^[a-zA-Z ]*$/",$name)) 
+	if (!preg_match("/^[a-zA-Z ]*$/", $name) && !preg_match ("/^[а-яА-Я ]*$/su", trim($name)))  
 	{
   		$nameErr =  "Name Error : Only letters and white space allowed \n"; 
-		$message += $nameErr;
+		$message .= $nameErr;
 	}
 	
 	if(validateDate($date_of_birth) == FALSE)
@@ -61,10 +97,10 @@
 		$message .= $typeErr;
 	}
 	
-	if (!preg_match("/^[a-zA-Z ]*$/", $city)) 
+	if (!preg_match("/^[a-zA-Z ]*$/", $city) && !preg_match ("/^[а-яА-Я ]*$/su", trim($city))) 
 	{
   		$cityErr =  "City Error : Only letters and white space allowed \n"; 
-		$message += $cityErr;
+		$message .= $cityErr;
 	}
 	
 	//If there is no error message insert into database
