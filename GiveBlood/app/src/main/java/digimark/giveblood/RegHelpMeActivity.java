@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -41,22 +42,23 @@ import java.util.Calendar;
 
 public class RegHelpMeActivity extends AppCompatActivity {
 
-	public static int Y;
-	public static int M;
-	public static int D;
+	private static int Y;
+	private static int M;
+	private static int D;
 
-	private ContentValues cv = new ContentValues();
+	private final ContentValues cv = new ContentValues();
 
 	private EditText name_input;
 	private EditText phone_number_input;
 	private EditText mail_input;
 	private EditText descr_input;
 	private EditText dep_input;
+	private EditText quantity_input;
 
 	private String city = "";
 	private String hospital = "";
 	private String blood_type = "A-";
-	public static String dateValue = "";
+	private static String dateValue = "";
 
 	private static final String TAG_DATA = "data";
 	private static final String TAG_NAME = "name";
@@ -68,15 +70,15 @@ public class RegHelpMeActivity extends AppCompatActivity {
 	private static final String TAG_HOSPITAL = "hospital";
 	private static final String TAG_DEPARTMENT = "department";
 	private static final String TAG_DESCRIPTION = "description";
+	private static final String TAG_QUANTITY = "quantity";
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_RESPONSE = "response";
 
-
-	public static Button date;
+	private static Button date;
 	private RadioGroup group;
 	private RadioButton radioButton;
 
-	View blood_header;
+	private View blood_header;
 	private View content_blood;
 
 	private View content_contacts;
@@ -84,7 +86,6 @@ public class RegHelpMeActivity extends AppCompatActivity {
 
 	private View telephone;
 	private View email;
-	private View date_content;
 	private View town_header;
 	private View hospital_header;
 	private ListView hospitals_listView;
@@ -96,6 +97,7 @@ public class RegHelpMeActivity extends AppCompatActivity {
 	private TextView description_amount_context;
 	private View town_content;
 	private ListView town_listView;
+	private String current_Ip = "http://192.168.88.150/GiveBlood/register_consumer.php";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -130,13 +132,15 @@ public class RegHelpMeActivity extends AppCompatActivity {
 		((TextView) getHeader_contacts().findViewById(R.id.view_head)).setText("Контакти, Телефон");
 
 		View name = findViewById(R.id.child1_names);
-			((TextView) name.findViewById(R.id.listview_childItem)).setText("Име:");
+			((TextView) (name != null ? name.findViewById(R.id.listview_childItem) : null)).setText("Име:");
 
 		setTelephone(findViewById(R.id.child1_number));
 			((TextView) getTelephone().findViewById(R.id.listview_childItem)).setText("Телефон: ");
 
+		((EditText) telephone.findViewById(R.id.edit_text)).setInputType(InputType.TYPE_CLASS_PHONE);
 		setEmail(findViewById(R.id.child1_email));
 			((TextView) getEmail().findViewById(R.id.listview_childItem)).setText("Email: ");
+		((EditText) email.findViewById(R.id.edit_text)).setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
 		((TextView) blood_header.findViewById(R.id.view_head)).setText("Кръвна група:");
 		((ImageView)  blood_header.findViewById(R.id.head_icon)).setImageResource(R.drawable.kravnagrupaicn);
@@ -158,11 +162,12 @@ public class RegHelpMeActivity extends AppCompatActivity {
 			department_context.setText("Отделение:");
 
 		description_header = findViewById(R.id.header6_description);
-		((ImageView) description_header.findViewById(R.id.head_icon)).setImageResource(R.drawable.mestopolojenieicn);
+		((ImageView) (description_header != null ? description_header.findViewById(R.id.head_icon) : null)).setImageResource(R.drawable.mestopolojenieicn);
 		((TextView) description_header.findViewById(R.id.view_head)).setText("Описание:");
 			description_context = ((TextView) findViewById(R.id.child6_descr).findViewById(R.id.listview_childItem));
 			description_context.setText("Описание: ");
 			description_amount_context = ((TextView) findViewById(R.id.child6_amount).findViewById(R.id.listview_childItem));
+			((EditText) findViewById(R.id.child6_amount).findViewById(R.id.edit_text)).setInputType(InputType.TYPE_CLASS_PHONE);
 			description_amount_context.setText("Необходимо количество: ");
 
 		//---------------------------Set Show/Hide events------------------------------------
@@ -181,7 +186,7 @@ public class RegHelpMeActivity extends AppCompatActivity {
 		String[] values1 = getResources().getStringArray(R.array.towns);
 
 		ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, android.R.id.text1, values1);
+				R.layout.list_view_liw, android.R.id.text1, values1);
 
 		town_listView.setAdapter(adapter1);
 		UIUtils.setListViewHeightBasedOnItems(town_listView);
@@ -205,15 +210,14 @@ public class RegHelpMeActivity extends AppCompatActivity {
 
 		//---------------------------ListView Hospitals-----------------------------------
 
-		;
-
 		String[] values = getResources().getStringArray(R.array.hospitals);
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, android.R.id.text1, values);
+				R.layout.list_view_liw, android.R.id.text1, values);
 
 		hospitals_listView.setAdapter(adapter);
 		UIUtils.setListViewHeightBasedOnItems(hospitals_listView);
+
 		hospitals_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
@@ -237,6 +241,7 @@ public class RegHelpMeActivity extends AppCompatActivity {
 		mail_input = (EditText) findViewById(R.id.child1_email).findViewById(R.id.edit_text);
 		dep_input = (EditText) findViewById(R.id.child5_depart).findViewById(R.id.edit_text);
 		descr_input = (EditText) findViewById(R.id.child6_descr).findViewById(R.id.edit_text);
+		quantity_input = (EditText) findViewById(R.id.child6_amount).findViewById(R.id.edit_text);
 		//-----------------------------------end--------------------------------------------
 
 
@@ -278,58 +283,50 @@ public class RegHelpMeActivity extends AppCompatActivity {
 
 	public void onRadioButtonClicked(View view) {
 		group = (RadioGroup) findViewById(R.id.radioGroup);
-		int radioButtonID = group.getCheckedRadioButtonId();
+		int radioButtonID = group != null ? group.getCheckedRadioButtonId() : 0;
 		radioButton = (RadioButton) findViewById(radioButtonID);
-		blood_type = radioButton.getText().toString();
+		blood_type = radioButton != null ? radioButton.getText().toString() : null;
 		((TextView) blood_header.findViewById(R.id.head_extra_text_view)).setText(blood_type);
 	}
 
-	public View getContent_blood() {
+	private View getContent_blood() {
 		return content_blood;
 	}
 
-	public void setContent_blood(View content_blood) {
+	private void setContent_blood(View content_blood) {
 		this.content_blood = content_blood;
 	}
 
-	public View getContent_contacts() {
+	private View getContent_contacts() {
 		return content_contacts;
 	}
 
-	public void setContent_contacts(View content_contacts) {
+	private void setContent_contacts(View content_contacts) {
 		this.content_contacts = content_contacts;
 	}
 
-	public View getHeader_contacts() {
+	private View getHeader_contacts() {
 		return header_contacts;
 	}
 
-	public void setHeader_contacts(View header_contacts) {
+	private void setHeader_contacts(View header_contacts) {
 		this.header_contacts = header_contacts;
 	}
 
-	public View getTelephone() {
+	private View getTelephone() {
 		return telephone;
 	}
 
-	public void setTelephone(View telephone) {
+	private void setTelephone(View telephone) {
 		this.telephone = telephone;
 	}
 
-	public View getEmail() {
+	private View getEmail() {
 		return email;
 	}
 
-	public void setEmail(View email) {
+	private void setEmail(View email) {
 		this.email = email;
-	}
-
-	public View getDate_content() {
-		return date_content;
-	}
-
-	public void setDate_content(View date_content) {
-		this.date_content = date_content;
 	}
 
 	public static class DatePickerFragment extends DialogFragment
@@ -369,11 +366,12 @@ public class RegHelpMeActivity extends AppCompatActivity {
 		private String message = "";
 		private String response = "";
 
-		String nameValue =  name_input.getText().toString();
-		String phoneValue = phone_number_input.getText().toString();
-		String emailValue = mail_input.getText().toString();
-		String depValue = dep_input.getText().toString();
-		String descValue = descr_input.getText().toString();
+		final String nameValue =  name_input.getText().toString();
+		final String phoneValue = phone_number_input.getText().toString();
+		final String emailValue = mail_input.getText().toString();
+		final String depValue = dep_input.getText().toString();
+		final String descValue = descr_input.getText().toString();
+		final String quanValue = quantity_input.getText().toString();
 
 		public PostClass(Context c){
 			this.context = c;
@@ -399,7 +397,7 @@ public class RegHelpMeActivity extends AppCompatActivity {
 		protected Void doInBackground(String... params) {
 			try {
 
-				URL url = new URL("http://192.168.1.118/GiveBlood/register_consumer.php");
+				URL url = new URL(current_Ip);
 				HttpURLConnection connection = (HttpURLConnection)url.openConnection();
 
 				cv.put(TAG_NAME, nameValue);
@@ -411,6 +409,7 @@ public class RegHelpMeActivity extends AppCompatActivity {
 				cv.put(TAG_HOSPITAL, hospital);
 				cv.put(TAG_DEPARTMENT, depValue);
 				cv.put(TAG_DESCRIPTION, descValue);
+				cv.put(TAG_QUANTITY, quanValue);
 
 				connection.setRequestMethod("POST");
 				connection.setReadTimeout(10000);
@@ -453,7 +452,7 @@ public class RegHelpMeActivity extends AppCompatActivity {
 				output.append(System.getProperty("line.separator") + data.getString(TAG_HOSPITAL));
 				output.append(System.getProperty("line.separator") + data.getString(TAG_DEPARTMENT));
 				output.append(System.getProperty("line.separator") + data.getString(TAG_DESCRIPTION));
-
+				output.append(System.getProperty("line.separator") + data.getString(TAG_QUANTITY));
 
 				output.append(System.getProperty("line.separator") + System.getProperty("line.separator") + "Message : " + System.getProperty("line.separator") + message);
 

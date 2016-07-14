@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/background"
+                tools:context=".RegHelpMeActivity">
+    >
+    <ImageView
+        android:src="@drawable/logopomogni"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:id="@+id/imageView5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/HelpMeText"
+        android:layout_below="@+id/imageView5"
+        android:layout_centerHorizontal="true"
+        android:text="ПОМОГНИ"
+        android:textSize="22dp"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textColor="#f50808"
+        android:textColorHighlight="#c15c5c"
+        android:textIsSelectable="false"
+        android:textAppearance="@style/AppTheme" />
+    <ScrollView
+        android:layout_below="@+id/HelpMeText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/Results">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include
+                layout="@layout/list_group_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:id="@+id/header1_contacts"
+                />
+            <RelativeLayout
+                android:id="@+id/group1child"
+                android:visibility="gone"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <include
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    layout="@layout/list_child_row"
+                    android:id="@+id/child1_names"
+                    />
+                <include
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/child1_names"
+                    layout="@layout/list_child_date_line"
+                    android:id="@+id/child1_date"
+                    />
+                <include
+                    android:id="@+id/child1_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/child1_date"
+                    layout="@layout/list_child_row"
+                    />
+                <include
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/child1_email"
+                    layout="@layout/list_child_row"
+                    android:id="@+id/child1_number"
+                    />
+
+            </RelativeLayout>
+            <include
+                android:id="@+id/header2_bloodtype"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="-7dp"
+                layout="@layout/list_group_heading"
+                />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:id="@+id/group2child">
+
+
+                <include
+                    android:layout_alignParentTop="true"
+                    android:id="@+id/child2_bloodtype"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    layout="@layout/list_blood_radio_group"
+                    />
+            </RelativeLayout>
+            <include
+                android:id="@+id/header3_town"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                layout="@layout/list_group_heading"
+                />
+            <LinearLayout
+                android:id="@+id/group3child"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+                <ListView
+                    android:id="@+id/list_town"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    >
+                </ListView>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/register_button"
+        android:src="@drawable/potvardibtn"
+        android:background="#00000000"
+        android:onClick="sendPostRequestConsumers"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Results"
+        android:textAlignment="center"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:text="@string/Rights"
+        android:textColor="#ff0000"
+        android:layout_above="@+id/register_button"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

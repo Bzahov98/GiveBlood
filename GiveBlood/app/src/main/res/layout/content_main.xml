@@ -15,7 +15,7 @@
         android:contentDescription="@string/giveimg"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentTop="true"
-        android:src="@drawable/logodari"
+        android:src="@mipmap/logodari"
         android:paddingTop="21dp" />
 
     <TextView android:id="@+id/GiveBloodDescr"
