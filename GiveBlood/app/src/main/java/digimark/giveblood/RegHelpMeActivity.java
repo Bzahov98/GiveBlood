@@ -140,7 +140,7 @@ public class RegHelpMeActivity extends RegBaseActivity {
 		setClicks(department_header, findViewById(R.id.group5child));
 		setClicks(description_header, findViewById(R.id.group6child));
 
-		//---------------------------ListView Hospitals-----------------------------------
+		//---------------------------ListView Towns-----------------------------------
 
 			ShowListView(true); // true for town, false for hospital
 
